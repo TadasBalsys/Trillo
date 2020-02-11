@@ -277,7 +277,7 @@
 
   &:hover {
     color: var(--color-grey-dark-1);
-  
+
     & span {
       margin-left: 8px;
     }
@@ -331,7 +331,7 @@
   &__item {
     flex: 0 0 50%;
     margin-bottom: 0.7rem;
-    }
+  }
 
   &__item::before {
     content: '';
@@ -422,7 +422,7 @@
   }
 
   &::before {
-    content: "\201C";
+    content: '\201C';
     position: absolute;
     top: -2.75rem;
     left: -1rem;
@@ -431,5 +431,76 @@
     line-height: 1;
     z-index: 5;
     color: var(--color-grey-light-3);
+  }
+}
+
+// Call to action
+
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+
+  &__book-now {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.btn {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: none;
+  border-radius: 50px;
+  // padding: 3rem 10rem;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  & > * {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: all 0.2s;
+  }
+
+  &__visible {
+    padding: 3rem 10rem;
+    visibility: visible;
+  }
+
+  &__hidden {
+    padding: 3rem 0;
+    visibility: hidden;
+    position: absolute;
+    top: -100%;
+    left: 0;
+  }
+
+  &:hover {
+    outline: none;
+    animation: pulsate 1s infinite;
+    background-image: linear-gradient(
+      to left,
+      var(--color-primary-light),
+      var(--color-primary-dark)
+    );
+  }
+
+  &:hover &__visible {
+    visibility: hidden;
+    transform: translateY(100%);
+  }
+
+  &:hover &__hidden {
+    visibility: visible;
+    top: 0;
   }
 }
