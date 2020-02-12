@@ -10,9 +10,13 @@
 .search {
   flex: 0 0 40%;
   display: flex;
-  // FIXME: Do I really need these two? With out them it works the same
-  align-items: center;
   justify-content: center;
+
+  @media only screen and (max-width: $bp-tablet-540) {
+    order: 1;
+    flex: 0 0 80%;
+    margin: 1.5rem auto;
+  }
 
   &__input {
     font-family: inherit;
@@ -123,11 +127,42 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-desktop-1100) {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  @media only screen and (max-width: $bp-tablet-540) {
+    align-items: center;
+  }
+
+  @media only screen and (max-width: $bp-mobile-375) {
+    flex-wrap: wrap;
+  }
+
   &__item {
     position: relative;
 
+    @media only screen and (max-width: $bp-desktop-1100) {
+      flex: 1;
+    }
+
+    @media only screen and (max-width: $bp-tablet-540) {
+      align-self: stretch;
+      display: flex;
+    }
+
+    @media only screen and (max-width: $bp-mobile-375) {
+      flex: 0 0 50%;
+    }
+
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-desktop-1100) {
+        margin-bottom: 0;
+      }
     }
 
     &::before {
@@ -165,6 +200,22 @@
     align-items: center;
     position: relative;
     z-index: 10;
+
+    @media only screen and (max-width: $bp-desktop-1100) {
+      display: flex;
+      justify-content: center;
+    }
+    @media only screen and (max-width: $bp-tablet-750) {
+      padding: 1.5rem 1.5rem;
+    }
+
+    @media only screen and (max-width: $bp-tablet-650) {
+      padding: 0.5rem;
+    }
+
+    @media only screen and (max-width: $bp-tablet-540) {
+      margin: 0 auto;
+    }
   }
 
   &__icon {
@@ -172,6 +223,15 @@
     height: 1.75rem;
     fill: var(--color-grey-light-1);
     margin-right: 1.5rem;
+
+    @media only screen and (max-width: $bp-tablet-540) {
+      margin-right: 0.5rem;
+    }
+  }
+  &__text {
+    @media only screen and (max-width: $bp-tablet-540) {
+      text-align: center;
+    }
   }
 }
 
@@ -182,6 +242,10 @@
   color: var(--color-grey-dark-3);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-desktop-1100) {
+    display: none;
+  }
 }
 
 // Gallery
@@ -200,8 +264,13 @@
 .overview {
   display: flex;
   align-items: center;
-  // padding: 1rem;
   border-bottom: var(--line);
+
+  @media only screen and (max-width: $bp-mobile-375) {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+  }
 
   &__heading {
     font-size: 2.5rem;
@@ -209,11 +278,27 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     padding: 1rem 3rem;
+
+    @media only screen and (max-width: $bp-tablet-650) {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (max-width: $bp-tablet-540) {
+      padding: 1rem;
+    }
+
+    @media only screen and (max-width: $bp-mobile-425) {
+      margin-right: 0;
+    }
   }
 
   &__star {
     margin-right: auto;
     display: flex;
+
+    @media only screen and (max-width: $bp-mobile-375) {
+      margin-right: 0;
+    }
   }
 
   &__icon-star,
@@ -229,6 +314,10 @@
     padding-right: 3rem;
     font-size: 1.4rem;
     align-items: center;
+
+    @media only screen and (max-width: $bp-tablet-540) {
+      padding-right: 1rem;
+    }
   }
 
   &__icon-location {
@@ -243,6 +332,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-tablet-540) {
+      padding: 0 0.75rem;
+    }
   }
 
   &__rating-average {
@@ -250,6 +343,10 @@
     font-weight: 300;
     color: var(--color-grey-light-1);
     margin-bottom: -5px;
+
+    @media only screen and (max-width: $bp-tablet-540) {
+      font-size: 1.6rem;
+    }
   }
 
   &__rating-count {
@@ -307,8 +404,6 @@
   }
 }
 
-// TODO: change .description block color to --color-grey-dark-3
-
 // Paragraph
 
 .paragraph:not(:last-of-type) {
@@ -361,7 +456,12 @@
   justify-content: space-between;
 
   &__count {
-    // margin-right: auto;
+    margin-right: auto;
+    padding-right: 1rem;
+  }
+
+  &__friends {
+    display: flex;
   }
 
   &__photo {
@@ -387,33 +487,50 @@
   position: relative;
   overflow: hidden;
 
+  @media only screen and (max-width: $bp-desktop-1100) {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &:first-child {
+    @media only screen and (max-width: $bp-tablet-750) {
+      margin-top: 2rem;
+    }
+  }
+
   &__text {
     margin-bottom: 2rem;
     z-index: 10;
     position: relative;
   }
+
   &__user {
     display: flex;
     align-items: center;
   }
+
   &__photo {
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 50%;
   }
+
   &__user-box {
     margin-left: 1.5rem;
   }
+
   &__user-name {
     font-size: 1.2rem;
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 0.4rem;
   }
+
   &__user-date {
     font-size: 1.1rem;
     color: var(--color-grey-dark-3);
   }
+
   &__rating {
     margin-left: auto;
     font-size: 2.2rem;
@@ -439,6 +556,10 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @media only screen and (max-width: $bp-desktop-1100) {
+    padding: 2rem 0;
+  }
 
   &__book-now {
     font-size: 2rem;
@@ -474,6 +595,10 @@
   &__visible {
     padding: 3rem 10rem;
     visibility: visible;
+
+    @media only screen and (max-width: $bp-desktop-1100) {
+      padding: 2rem 8rem;
+    }
   }
 
   &__hidden {
@@ -482,6 +607,10 @@
     position: absolute;
     top: -100%;
     left: 0;
+
+    @media only screen and (max-width: $bp-desktop-1100) {
+      padding: 2rem;
+    }
   }
 
   &:hover {
